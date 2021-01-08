@@ -15,7 +15,7 @@ Verfiy Correct Server
 aws ec2 describe-instance-status \
   --instance-id i-<ID> \
   --profile PROFILE_NAME \
-  --region us-east-1 | jq -r .InstanceStatuses[].InstanceState[]
+  --region us-east-1 | jq -r .InstanceStatuses[].InstanceState | jq -r '.Name'
 ### or ###
 aws ec2 describe-instance-status \
   --instance-id i-<ID>9 \

@@ -1,7 +1,4 @@
-# Error
-
-
-#AWS CLI#
+# AWS CLI #
 ```
 Nested Json
 ```

@@ -13,14 +13,14 @@ aws ec2 describe-instances   --instance-ids i-<ID>   --profile PROFILE_NAME   --
 Verfiy Correct Server
 ```
 aws ec2 describe-instance-status \
-  --instance-id i-<ID> \
-  --profile PROFILE_NAME \
-  --region us-east-1 | jq -r .InstanceStatuses[].InstanceState | jq -r '.Name'
+  --instance-id ${InstanceId} \
+  --profile ${PROFILE} \
+  --region ${AWS_REGION} | jq -r .InstanceStatuses[].InstanceState | jq -r '.Name'
 ### or ###
 aws ec2 describe-instance-status \
-  --instance-id i-<ID>9 \
-  --profile PROFILE_NAME \
-  --region us-east-1 | jq -r .Reservations[].Instances[].State | jq -r '.Name' 
+  --instance-id ${InstanceId} \
+  --profile ${PROFILE} \
+  --region ${AWS_REGION} | jq -r .Reservations[].Instances[].State | jq -r '.Name' 
 
 ```
 IP Address via Terminal

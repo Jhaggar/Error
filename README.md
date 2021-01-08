@@ -30,7 +30,14 @@ IP Address via Terminal
 - curl -4 icanhazip.com
 - curl -6 icanhazip.com
 
-
+```
+Update Tag of AWS Resouces
+```
+aws ec2 update-security-group-rule-descriptions-ingress \
+	--profile ${PROFILE} \
+	--region ${AWS_REGION} \
+	--group-id {SECURITY_GROUP} \
+	--ip-permissions '[{"IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "IpRanges": [{"CidrIp": "'$IP'/32", "Description": "Automatic added on '$current_date'"}]}]' 
 
 
 

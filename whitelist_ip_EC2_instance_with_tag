@@ -1,0 +1,77 @@
+#!/bin/bash -e
+set -ex
+
+# Usage: bash whitelist_IP.sh 22 "ip1,ip2" us-east-1
+IP=$1
+PORT=22
+AWS_REGION="us-east-1"
+PROFILE=
+current_date=`date '+%Y-%m-%d-%H-%M-%S'`
+InstanceId=
+
+echo "IP"
+echo "PORT"
+echo "AWS_REGION"
+
+if [[ -z "${IP}" ]] || [[ -z "${PORT}" ]];then
+echo "Parameter is missing"
+exit 1
+fi
+
+VPC_ID=$(aws ec2 describe-instances \
+	--filters "Name=instance-state-name,Values=running" \
+	--instance-ids ${InstanceId} \
+	--region ${AWS_REGION} \
+	--profile ${PROFILE} \
+	--output text  \
+	--query "Reservations[0].Instances[0].VpcId" )
+
+if [[ "${VPC_ID}" == "None" ]];then
+      echo "Unable to get VPC" 
+      exit 1
+fi
+
+echo "VPC ID : $VPC_ID"
+
+SECURITY_GROUP=$(aws ec2 describe-instances \
+	--instance-ids ${InstanceId} \
+	--filters "Name=instance-state-name,Values=running" "Name=vpc-id,Values=${VPC_ID}" \
+	--profile ${PROFILE} \
+	--region $AWS_REGION |  jq -r .Reservations[].Instances[].SecurityGroups[0].GroupId)
+
+echo "SECURITY_GROUP : $SECURITY_GROUP"
+
+aws ec2 authorize-security-group-ingress \
+	--group-id ${SECURITY_GROUP} \
+	--protocol tcp \
+	--port ${PORT} \
+	--cidr "${IP}/32" \
+	--region ${AWS_REGION} \
+	--profile ${PROFILE}
+
+
+sleep 20
+
+### Update Tag on Ingress Rule ###
+aws ec2 update-security-group-rule-descriptions-ingress \
+	--profile ${PROFILE} \
+	--region ${AWS_REGION} \
+	--group-id {SECURITY_GROUP} \
+	--ip-permissions '[{"IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "IpRanges": [{"CidrIp": "'$IP'/32", "Description": "Automatic added on '$current_date'"}]}]' 
+
+
+
+
+
+
+
+
+
+
+#!/bin/bash
+# script to pull my current public IP address 
+# and add a rule to my EC2 security group allowing me SSH access 
+# curl v4.ifconfig.co > ip.txt
+# awk '{ print $0 "/32" }' < ip.txt > ipnew.txt
+# export stuff=$(cat ipnew.txt)
+# aws ec2 authorize-security-group-ingress --group-name NewGroup --protocol tcp --port 22 --cidr $stuff

@@ -2,7 +2,7 @@
 
 
 `AWS CLI` </br>
-<b>Nested Json</b> </br>
+<b>```Nested Json</b>``` </br>
 aws ssm get-parameters --names "/<name>" --query "Parameters[*].{Value:Value}" --region=us-east-1 | jq -r '.[].Value' | jq -r '.elastic_search' | jq -r '.endpoint'
   
 Get Instance running State :-   

@@ -21,3 +21,28 @@ aws ec2 describe-instance-status \
   --instance-id i-<ID>9 \
   --profile PROFILE_NAME \
   --region us-east-1 | jq -r .Reservations[].Instances[].State | jq -r '.Name' 
+
+```
+IP Address via Terminal
+```
+- curl v4.ifconfig.co
+- curl ifconfig.me
+- curl -4 icanhazip.com
+- curl -6 icanhazip.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

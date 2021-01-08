@@ -10,4 +10,18 @@ aws ssm get-parameters --names "/<name>" --query "Parameters[*].{Value:Value}" -
 ```
 Get Instance running State :-
 ```
-aws ec2 describe-instances   --instance-ids i-<id>   --profile albert   --region us-east-1 |  jq -r .Reservations[].Instances[].State | jq -r '.Name'
+aws ec2 describe-instances   --instance-ids i-<ID>   --profile PROFILE_NAME   --region us-east-1 |  jq -r .Reservations[].Instances[].State | jq -r '.Name'
+
+
+# Verfiy Correct Server #
+aws ec2 describe-instance-status \
+  --instance-id i-<ID> \
+  --profile PROFILE_NAME \
+  --region us-east-1 | jq -r .InstanceStatuses[].InstanceState[]
+
+## or ##
+
+aws ec2 describe-instance-status \
+  --instance-id i-<ID>9 \
+  --profile PROFILE_NAME \
+  --region us-east-1 | jq -r .Reservations[].Instances[].State | jq -r '.Name' 

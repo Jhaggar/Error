@@ -66,10 +66,11 @@ cron only has a resolution of 1 minute. To resolve your issue you need 60 second
 ImportError: cannot import name 'docevents'
 
 ### Then Run this :- 
->curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-unzip awscli-bundle.zip
-./awscli-bundle/install -b ~/bin/aws
-export PATH=~/bin:$PATH
+>
+- curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+- unzip awscli-bundle.zip
+- ./awscli-bundle/install -b ~/bin/aws
+- export PATH=~/bin:$PATH
 
 
 

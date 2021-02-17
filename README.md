@@ -1,4 +1,5 @@
 # AWS CLI #
+### MarkDown Systax :- https://stackedit.io/app #
 ```
 Nested Json
 ```
@@ -38,8 +39,6 @@ Update Tag of AWS Resouces
 	--region ${AWS_REGION} \
 	--group-id {SECURITY_GROUP} \
 	--ip-permissions '[{"IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "IpRanges": [{"CidrIp": "'$IP'/32", "Description": "Automatic added on '$current_date'"}]}]' 
-
-### https://stackedit.io/app#
 
 ### Cron
 cron only has a resolution of 1 minute. To resolve your issue you need 60 seconds / 10 seconds = 6 cron jobs, each with a sleep.

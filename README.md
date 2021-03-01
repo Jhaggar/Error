@@ -1,4 +1,5 @@
 # AWS CLI #
+### MarkDown Systax :- https://stackedit.io/app #
 ```
 Nested Json
 ```
@@ -39,10 +40,7 @@ Update Tag of AWS Resouces
 	--group-id {SECURITY_GROUP} \
 	--ip-permissions '[{"IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "IpRanges": [{"CidrIp": "'$IP'/32", "Description": "Automatic added on '$current_date'"}]}]' 
 
-#https://stackedit.io/app#
-
-##Cron
-
+### Cron
 cron only has a resolution of 1 minute. To resolve your issue you need 60 seconds / 10 seconds = 6 cron jobs, each with a sleep.
 
 ```
@@ -57,8 +55,22 @@ cron only has a resolution of 1 minute. To resolve your issue you need 60 second
 * * * * * bash /home/ritesh/Downloads/crontest/crontab.sh
 0 4 * * * bash /home/ritesh/Downloads/crontest/test_cron.sh
 ```
+### If Getting Error
+>Traceback (most recent call last):
+  File "/usr/bin/aws", line 19, in <module>
+    import awscli.clidriver
+  File "/usr/lib/python3/dist-packages/awscli/clidriver.py", line 36, in <module>
+    from awscli.help import ProviderHelpCommand
+  File "/usr/lib/python3/dist-packages/awscli/help.py", line 23, in <module>
+    from botocore.docs.bcdoc import docevents
+ImportError: cannot import name 'docevents'
 
-
+### Then Run this :- 
+>
+- curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+- unzip awscli-bundle.zip
+- ./awscli-bundle/install -b ~/bin/aws
+- export PATH=~/bin:$PATH
 
 
 

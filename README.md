@@ -83,7 +83,26 @@ ImportError: cannot import name 'docevents'
 - apt install python3 -y
 - apt install ansible -y 
 
+## Error getting pip install argparser
+>Exception:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/dist-packages/pip/basecommand.py", line 215, in main
+    status = self.run(options, args)
+  File "/usr/lib/python2.7/dist-packages/pip/commands/install.py", line 353, in run
+    wb.build(autobuilding=True)
+  File "/usr/lib/python2.7/dist-packages/pip/wheel.py", line 749, in build
+    self.requirement_set.prepare_files(self.finder)
+  File "/usr/lib/python2.7/dist-packages/pip/req/req_set.py", line 380, in prepare_files
+    ignore_dependencies=self.ignore_dependencies))
+  File "/usr/lib/python2.7/dist-packages/pip/req/req_set.py", line 554, in _prepare_file
+    require_hashes
 
+## Solution of pip install argparser:-
+```
+wget https://files.pythonhosted.org/packages/18/dd/e617cfc3f6210ae183374cd9f6a26b20514bbb5a792af97949c5aacddf0f/argparse-1.4.0.tar.gz
+
+pip install argparse
+```
 
 
 

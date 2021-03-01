@@ -72,6 +72,23 @@ ImportError: cannot import name 'docevents'
 - ./awscli-bundle/install -b ~/bin/aws
 - export PATH=~/bin:$PATH
 
+### Some Important packages :-
+>
+- sudo apt update
+- sudo apt install snapd
+- sudo snap install authy --beta
+- sudo snap install obs-studio
+- sudo apt  install awscli -y
+- apt install vim -y
+- apt install python3 -y
+- apt install ansible -y 
+
+
+
+
+
+
+
 
 
 

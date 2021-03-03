@@ -1,0 +1,30 @@
+git clone https://<token>@github.com/Jhaggar/REPO.git
+chown root:ritesh -R REPO/
+chmod -R g+w REPO/
+------------------------------------------------------------
+## Get inside directory ##
+git config --global user.email "riteshjhaggar1988@gmail.com"
+git config --global user.name "Jhaggar"
+-------------------------------------------------------------
+git config --local user.email "riteshjhaggar1988@gmail.com"
+git config --local user.name "Jhaggar"
+----------------------------------------------------------------
+Git commands for commiting changes-
+
+git status
+git add .
+git status
+git commit -am "updated"
+git push origin master
+
+---------------------------------------------------------------------------------------
+
+New Git commands -Concept merge changes in master and keep v1.3.0 branch update with master.
+
+git checkout master
+git pull origin master
+git pull
+git checkout v1.3.0
+git pull origin v1.3.0
+git rebase master
+git push origin v1.3.0 -f 

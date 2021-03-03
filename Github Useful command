@@ -3,11 +3,11 @@ chown root:ritesh -R REPO/
 chmod -R g+w REPO/
 ------------------------------------------------------------
 ## Get inside directory ##
-git config --global user.email "riteshjhaggar1988@gmail.com"
-git config --global user.name "Jhaggar"
+git config --global user.email "USERNAME@gmail.com"
+git config --global user.name "USERNAME"
 -------------------------------------------------------------
-git config --local user.email "riteshjhaggar1988@gmail.com"
-git config --local user.name "Jhaggar"
+git config --local user.email "USERNAME@gmail.com"
+git config --local user.name "USERNAME"
 ----------------------------------------------------------------
 Git commands for commiting changes-
 

@@ -15,4 +15,7 @@ Linux Basic Command
 ### grep -n "unix" geekfile.txt
 >Show line number while displaying the output using grep -n : To show the line number of file with the line matched. 
 
-### To print the fifth column, use the following command :- awk '{ print $5 }' filename
+### awk '{ print $5 }' filename
+>To print the fifth column, use the following command
+
+

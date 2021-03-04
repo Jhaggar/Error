@@ -1,7 +1,7 @@
 Linux Basic Command 
 
-grep -i "UNix" geekfile.txt
+## grep -i "UNix" geekfile.txt
 
- The -i option enables to search for a string case insensitively in the give file. It matches the words like “UNIX”, “Unix”, “unix”. 
+The -i option enables to search for a string case insensitively in the give file. It matches the words like “UNIX”, “Unix”, “unix”. 
 
  

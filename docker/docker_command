@@ -1,0 +1,79 @@
+docker image ls
+
+docker container ls --all
+
+docker search nginx
+
+docker run --name my-nginx -P -d nginx
+ where	--name my-nginx	== container_name
+ 		-P == random port
+ 		-d == Run in backgroung
+ 		nginx == image from which we are creating container
+
+docker container ls --> to get container info
+
+curl http://localhost:32768 --> it will give web page of nginx
+
+docker inspect <container-id>
+
+docker stop <container-id>
+
+docker container ls
+
+docker container ls --all
+
+docker start <container-id>
+
+docker rm <container-id>
+
+docker image ls
+
+docker image rm <IMAGE-ID>
+
+docker run -e ENV_VAR1=myvalue1 ubuntu env | grep ENV_VAR
+
+docker logs <container-id>
+
+===========================================
+
+###########
+## CMD ###
+###########
+cat > Dockerfile <<EOF
+> From busybox
+> CMD echo "Hello World! This is my first Docker image."
+> EOF
+
+cat Dockerfile
+
+docker build -t container-1 .
+
+docker images ls
+
+docker run container-1
+
+docker run -it container-1 /bin/sh
+
+
+===========================================
+
+###################
+### ENTRYPOINT ####
+###################
+
+From ubuntu:latest
+RUN DEBIEN_FRONTEND=noninteractive apt-get update
+RUN DEBIEN_FRONTEND=noninteractive apt-get -yq install net-tools nginx
+EXPOSE 80
+ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
+
+docker build -t our-nginx .
+
+docker image ls
+
+docker run -d -p 8888:80 our-nginx
+
+curl http://localhost:8888
+
+===========================================
+

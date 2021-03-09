@@ -21,7 +21,17 @@ Verfiy Correct Server
 >aws ec2 describe-instance-status \
   --instance-id ${InstanceId} \
   --profile ${PROFILE} \
-  --region ${AWS_REGION} | jq -r .Reservations[].Instances[].State | jq -r '.Name' 
+  --region ${AWS_REGION} | jq -r .Reservations[].Instances[].State | jq -r '.Name'
+
+### Get Server Private IP address Using Tag
+>aws ec2 describe-instances \
+	--filters "Name=instance-state-name,Values=running" \
+	--filters "Name=tag:Name,Values=JenkinsSlave-UI" --region ${AWS_REGION} --profile ${PROFILE} | jq -r .Reservations[].Instances[].PrivateIpAddress
+
+
+>aws ec2 describe-instances \
+	--filters "Name=instance-state-name,Values=running" \
+	--filters "Name=tag:Name,Values=Jenkins-Slave3.0_U" --region ${AWS_REGION} --profile ${PROFILE} | jq -r .Reservations[].Instances[].PrivateIpAddress
 
 ```
 IP Address via Terminal

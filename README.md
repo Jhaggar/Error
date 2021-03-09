@@ -13,23 +13,23 @@ aws ec2 describe-instances   --instance-ids i-<ID>   --profile PROFILE_NAME   --
 ```
 Verfiy Correct Server
 ```
->aws ec2 describe-instance-status \
+aws ec2 describe-instance-status \
   --instance-id ${InstanceId} \
   --profile ${PROFILE} \
   --region ${AWS_REGION} | jq -r .InstanceStatuses[].InstanceState | jq -r '.Name'
 ### or ###
->aws ec2 describe-instance-status \
+aws ec2 describe-instance-status \
   --instance-id ${InstanceId} \
   --profile ${PROFILE} \
   --region ${AWS_REGION} | jq -r .Reservations[].Instances[].State | jq -r '.Name'
 
 ### Get Server Private IP address Using Tag
->aws ec2 describe-instances \
+aws ec2 describe-instances \
 	--filters "Name=instance-state-name,Values=running" \
 	--filters "Name=tag:Name,Values=JenkinsSlave-UI" --region ${AWS_REGION} --profile ${PROFILE} | jq -r .Reservations[].Instances[].PrivateIpAddress
 
 
->aws ec2 describe-instances \
+aws ec2 describe-instances \
 	--filters "Name=instance-state-name,Values=running" \
 	--filters "Name=tag:Name,Values=Jenkins-Slave3.0_U" --region ${AWS_REGION} --profile ${PROFILE} | jq -r .Reservations[].Instances[].PrivateIpAddress
 
